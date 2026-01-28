@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  unix-sandbox:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: unix-fundamentals-sandbox
+    hostname: sandbox
+    stdin_open: true
+    tty: true
+    volumes:
+      # Optional: Mount a local directory to save your work
+      - sandbox-data:/home/student/workspace
+    environment:
+      - TERM=xterm-256color
+    command: /bin/bash
+
+volumes:
+  sandbox-data:
+    driver: local

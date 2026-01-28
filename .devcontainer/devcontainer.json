@@ -1,0 +1,35 @@
+{
+  "name": "Unix Fundamentals Sandbox",
+  "image": "ubuntu:22.04",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": false,
+      "installOhMyZsh": false,
+      "username": "student",
+      "userUid": "1000",
+      "userGid": "1000"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+  },
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y vim nano curl wget git tree htop net-tools nginx man-db less && sudo chmod +x /workspaces/unix-fundamentals-sandbox/sandbox-setup/init.sh && sudo /workspaces/unix-fundamentals-sandbox/sandbox-setup/init.sh",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.shell.linux": "/bin/bash"
+      },
+      "extensions": [
+        "ms-vscode.vscode-embedded-tools"
+      ]
+    }
+  },
+
+  "remoteUser": "student",
+  
+  "workspaceFolder": "/home/student"
+}
