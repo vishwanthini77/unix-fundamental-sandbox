@@ -56,58 +56,181 @@ Debug real-world issues like a DevOps engineer.
 
 **Total Time:** 4-5 hours (self-paced)
 
-## 🚀 Quick Start
+## 🚀 Quick Start - Choose Your Path
 
-Choose your preferred setup method:
+### 🔥 FASTEST: GitHub Codespaces (Browser-Based - 2 Minutes)
 
-### Option 1: Docker (Recommended - Most Realistic)
+**No installation needed! Perfect if you want to start learning RIGHT NOW.**
 
-**Prerequisites:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed
+**Prerequisites:** 
+- GitHub account (free) - [Sign up here](https://github.com/join)
+- Modern web browser
+
+**Steps:**
+1. Go to this repository on GitHub
+2. Click the green **"Code"** button
+3. Click **"Codespaces"** tab
+4. Click **"Create codespace on main"**
+5. Wait ~2 minutes while environment sets up
+6. Terminal opens automatically - you're ready!
 
 ```bash
-# Clone the repository
+# Once the terminal loads, start learning:
+cd ~/exercises/session1-navigation
+cat README.md
+```
+
+**⚠️ Files not showing?** If you don't see `exercises` or `solutions` folders:
+```bash
+cd ~
+git clone https://github.com/vishwanthini77/unix-fundamental-sandbox.git
+cd unix-fundamental-sandbox
+chmod +x sandbox-setup/init.sh
+sudo sandbox-setup/init.sh
+```
+See [Troubleshooting Guide](TROUBLESHOOTING.md) for details.
+
+✅ **Pros:** Instant access, works on any device, no setup  
+✅ **Free tier:** 120 hours/month (plenty for this course)  
+⚠️ **Requires:** Internet connection
+
+---
+
+### 💻 Docker Desktop (Local Setup - 15 Minutes)
+
+**More realistic environment. Best for recording videos or offline work.**
+
+#### Prerequisites - READ THIS FIRST! ⚠️
+
+**YOU MUST INSTALL DOCKER DESKTOP BEFORE PROCEEDING!**
+
+Docker is NOT installed by default on your computer. If you try to run `docker` commands without installing it first, you'll get an error: `command not found` or `docker: command not found`.
+
+**Install Docker Desktop:**
+1. Go to: **https://www.docker.com/products/docker-desktop/**
+2. Download for your operating system (Windows/Mac/Linux)
+3. Install and follow the setup wizard
+4. **Restart your computer** if prompted
+5. Open Docker Desktop and wait for it to fully start (whale icon in system tray)
+6. Verify installation: Open terminal and run `docker --version`
+   - Should show: `Docker version 24.x.x` or similar
+   - If you see "command not found", Docker isn't installed correctly
+
+**System Requirements:**
+- Windows 10/11 (64-bit) or macOS 10.15+ or Linux
+- 4GB RAM minimum (8GB recommended)
+- ~3GB free disk space
+
+#### Setup Steps (After Docker Desktop is Installed):
+
+```bash
+# 1. Clone the repository
 git clone https://github.com/yourusername/unix-fundamentals-sandbox.git
 cd unix-fundamentals-sandbox
 
-# Build and run the container
+# 2. Navigate to docker directory
 cd docker
-docker-compose up -d
 
-# Enter the sandbox
+# 3. Build and start the container
+# NOTE: Use "docker compose" (no hyphen) on newer Docker versions
+docker compose up -d
+
+# If you get "command not found", try the old syntax:
+# docker-compose up -d
+
+# 4. Enter the sandbox
 docker exec -it unix-fundamentals-sandbox bash
 
-# You're now in the sandbox! Start learning:
+# 5. You're in! Start learning:
 cd ~/exercises/session1-navigation
 cat README.md
 ```
 
-**To exit:** Type `exit`, then `docker-compose down` to stop the container.
+**To exit and stop:**
+```bash
+# Inside container, type:
+exit
 
-### Option 2: GitHub Codespaces (Browser-Based - Zero Install)
+# Then stop the container:
+docker compose down
+```
 
-**Prerequisites:** GitHub account (free)
+✅ **Pros:** Works offline, most realistic, full control  
+⚠️ **Cons:** Requires installation, uses disk space  
 
-1. Click the green "Code" button on this repository
-2. Select "Codespaces" tab
-3. Click "Create codespace on main"
-4. Wait for environment to load (~2 minutes)
-5. You're in! Terminal opens automatically
+---
+
+### 🌐 Replit (Alternative Browser Option)
+
+**Prerequisites:** Replit account (free)
+
+1. Visit [replit.com](https://replit.com) and sign up
+2. Click **"Create Repl"**
+3. Select **"Import from GitHub"**
+4. Paste this repository URL
+5. Click **"Import"**
+6. Wait for setup, then terminal opens automatically
 
 ```bash
 cd ~/exercises/session1-navigation
 cat README.md
 ```
 
-### Option 3: Replit (Alternative Browser Option)
+---
 
-**Prerequisites:** Replit account (free)
+## 🆘 Troubleshooting Common Issues
 
-1. Visit [replit.com](https://replit.com)
-2. Click "Create Repl"
-3. Select "Import from GitHub"
-4. Paste this repository URL
-5. Click "Import"
-6. Terminal opens automatically - start learning!
+### "docker: command not found" or "docker-compose: command not found"
+
+**Problem:** Docker Desktop is not installed or not running.
+
+**Solution:**
+1. Install Docker Desktop from https://www.docker.com/products/docker-desktop/
+2. Make sure Docker Desktop is running (check system tray for whale icon)
+3. Restart your terminal/command prompt
+4. Try again
+
+### "docker-compose: command not found" (but docker works)
+
+**Problem:** You have Docker Compose V2 which uses different syntax.
+
+**Solution:** Use `docker compose` (no hyphen) instead of `docker-compose`:
+```bash
+docker compose up -d
+docker compose down
+```
+
+### Container builds but exercises folder is empty
+
+**Problem:** Initialization script didn't run.
+
+**Solution:**
+```bash
+# Enter the container
+docker exec -it unix-fundamentals-sandbox bash
+
+# Manually run setup
+sudo /tmp/init.sh
+
+# Then start learning
+cd ~/exercises/session1-navigation
+```
+
+### GitHub Codespaces not loading
+
+**Problem:** Browser blocking or slow internet.
+
+**Solution:**
+1. Try a different browser (Chrome/Edge recommended)
+2. Check your internet connection
+3. Wait a bit longer - first time setup takes 2-3 minutes
+4. Refresh the page
+
+### Still stuck?
+
+**Open an issue:** [GitHub Issues](https://github.com/yourusername/unix-fundamentals-sandbox/issues)
+
+---
 
 ## 📖 How to Use This Sandbox
 
@@ -132,35 +255,6 @@ cat README.md
 
 5. **Take your time** - this is a safe environment, you can't break anything!
 
-## 🗂️ Repository Structure
-
-```
-unix-fundamentals-sandbox/
-├── README.md                      # You are here!
-├── docker/                        # Docker setup files
-│   ├── Dockerfile
-│   └── docker-compose.yml
-├── .devcontainer/                 # GitHub Codespaces config
-│   └── devcontainer.json
-├── sandbox-setup/                 # Initialization script
-│   └── init.sh
-├── exercises/                     # Learning exercises
-│   ├── README.md
-│   ├── session1-navigation/
-│   ├── session2-permissions/
-│   ├── session3-processes/
-│   ├── session4-packages/
-│   └── session5-troubleshooting/
-├── solutions/                     # Exercise solutions
-│   └── (same structure)
-├── cheatsheets/                   # Quick reference
-│   └── unix-commands.md
-└── resources/                     # Sample files
-    ├── sample-app/                # Realistic app structure
-    ├── sample-logs/               # Log files for practice
-    └── sample-configs/            # Configuration examples
-```
-
 ## 🎓 What You'll Learn
 
 By the end of this course, you'll be able to:
@@ -181,16 +275,28 @@ By the end of this course, you'll be able to:
 3. **Use Tab completion** - Let the shell help you type
 4. **Experiment freely** - You can't break this sandbox
 5. **Take breaks** - Learning is more effective in focused sessions
-6. **Ask questions** - Open GitHub issues if stuck
+
+## 🗂️ Repository Structure
+
+```
+unix-fundamentals-sandbox/
+├── README.md                      # You are here!
+├── QUICKSTART.md                  # 5-minute quick start guide
+├── TROUBLESHOOTING.md             # Common issues and solutions
+├── docker/                        # Docker setup files
+├── .devcontainer/                 # GitHub Codespaces config
+├── exercises/                     # Learning exercises (5 sessions)
+├── solutions/                     # Exercise solutions
+├── cheatsheets/                   # Quick reference guides
+└── resources/                     # Sample files and configs
+```
 
 ## 📺 Video Tutorial Series
 
 This sandbox accompanies a video tutorial series walking through each session:
-- [Session 1: Navigation](#) (Coming soon)
-- [Session 2: Permissions](#) (Coming soon)
-- [Session 3: Processes](#) (Coming soon)
-- [Session 4: Packages](#) (Coming soon)
-- [Session 5: Troubleshooting](#) (Coming soon)
+- [Playlist: Unix for the Rest of Us](#) (Coming soon)
+
+**Subscribe for updates when new sessions are released!**
 
 ## 🤝 Contributing
 
@@ -205,9 +311,13 @@ Found a typo? Have a suggestion? Contributions are welcome!
 
 MIT License - Feel free to use this for teaching, learning, or any purpose.
 
-## 🙏 Acknowledgments
+## 🙏 About
 
-Created by [Vishu](https://github.com/yourusername) as part of a journey from IT management to hands-on technical skills. If you're in a similar position, you're not alone!
+Created as part of the **"For the Rest of Us"** series - technical skills for the technically adjacent.
+
+**Creator:** [Your Name](https://github.com/yourusername)  
+**Series:** For the Rest of Us  
+**Website:** [Coming soon]  
 
 ## 📞 Support & Feedback
 
@@ -215,17 +325,19 @@ Created by [Vishu](https://github.com/yourusername) as part of a journey from IT
 - **Discussions:** [GitHub Discussions](https://github.com/yourusername/unix-fundamentals-sandbox/discussions)
 - **Video Series:** [YouTube Channel](#)
 
-## 🚦 Next Steps After This Course
+## 🚦 What's Next?
 
-Once you've mastered these fundamentals, consider exploring:
-- **Advanced Unix:** Shell scripting, cron jobs, ssh configuration
-- **AWS Deep Dive:** EC2, VPC, IAM, CloudWatch
-- **Terraform:** Infrastructure as Code
-- **Docker & Kubernetes:** Containerization
-- **CI/CD Pipelines:** GitLab CI, GitHub Actions
+Once you've mastered Unix fundamentals, check out other courses in the "For the Rest of Us" series:
+- **React for the Rest of Us** (Coming soon)
+- **Terraform for the Rest of Us** (Coming soon)
+- **Docker for the Rest of Us** (Coming soon)
 
 ---
 
-**Ready to start?** Choose your setup method above and dive into Session 1! 🎉
+**Ready to start?** 
+
+👉 **Fastest:** [Try GitHub Codespaces](#-fastest-github-codespaces-browser-based---2-minutes) (2 minutes, no install)  
+👉 **Most realistic:** [Install Docker Desktop](#-docker-desktop-local-setup---15-minutes) (15 minutes, works offline)
 
 *Remember: Every expert was once a beginner. You've got this!* 💪
+
