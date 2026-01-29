@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Welcome script for Unix Fundamentals Sandbox
+# Load bash configuration
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
 
 clear
 
@@ -30,5 +33,5 @@ echo ""
 echo "════════════════════════════════════════════════════════════"
 echo ""
 
-# Start bash shell
+# Start bash shell (inherits the PS1 from .bashrc)
 exec bash

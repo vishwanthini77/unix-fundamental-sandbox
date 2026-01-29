@@ -1,4 +1,4 @@
-run = "bash"
+run = ["sh", "-c", "cp .bashrc ~/.bashrc && chmod +x .welcome.sh && ./.welcome.sh"]
 language = "bash"
 entrypoint = ".welcome.sh"
 
