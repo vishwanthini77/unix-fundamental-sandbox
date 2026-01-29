@@ -1,193 +1,181 @@
 # Quick Start Guide
 
-Get into the Unix learning environment in under 5 minutes.
-
-## ⚡ Choose Your Setup Method
-
-### Option A: GitHub Codespaces (Fastest - 2 Minutes) ⭐ RECOMMENDED FOR BEGINNERS
-
-**✅ No installation required**  
-**✅ Works in your browser**  
-**✅ Free tier: 120 hours/month**
-
-#### Steps:
-1. Make sure you have a GitHub account ([sign up free](https://github.com/join))
-2. Go to this repository on GitHub
-3. Click the green **"Code"** button
-4. Select **"Codespaces"** tab
-5. Click **"Create codespace on main"**
-6. Wait ~2 minutes (first time only)
-7. Terminal opens automatically ✨
-
-```bash
-# You're in! Start learning:
-cd ~/exercises/session1-navigation
-cat README.md
-```
-
-**💡 Tip:** Bookmark your codespace URL for quick access later!
-
-**⚠️ Troubleshooting:** If you don't see the repository files (missing `exercises`, `solutions` folders), the codespace may not have loaded them properly. **Quick fix:**
-
-```bash
-cd ~
-git clone https://github.com/vishwanthini77/unix-fundamental-sandbox.git
-cd unix-fundamental-sandbox
-chmod +x sandbox-setup/init.sh
-sudo sandbox-setup/init.sh
-cd ~/exercises/session1-navigation
-```
-
-Now you're ready to learn!
+**Goal:** Get you learning Unix in under 2 minutes. No setup required.
 
 ---
 
-### Option B: Docker Desktop (15 Minutes)
+## ⚡ Fastest Way to Start (Recommended)
 
-**✅ Works offline**  
-**✅ Most realistic environment**  
-**⚠️ Requires installation**
+### Click This Button:
 
-#### Step 1: Install Docker Desktop FIRST
+[![Run on Repl.it](https://replit.com/badge/github/yourusername/unix-fundamentals-sandbox)](https://replit.com/github/yourusername/unix-fundamentals-sandbox)
 
-**🚨 IMPORTANT: You MUST install Docker Desktop before proceeding!**
-
-Running `docker` commands without Docker installed will give you: `command not found`
-
-**Install from:** https://www.docker.com/products/docker-desktop/
-
-**System Requirements:**
-- Windows 10/11 Pro or macOS 10.15+
-- 4GB RAM (8GB recommended)
-- ~3GB free disk space
-
-**After installing:**
-1. Open Docker Desktop
-2. Wait for it to start completely (whale icon in system tray)
-3. Verify: Open terminal and run `docker --version`
-   - Should show version number
-   - If "command not found", restart computer
-
-#### Step 2: Set Up Sandbox
+**Then:**
+1. Click **"Fork Repl"** (creates your own copy)
+2. Wait 30 seconds while it sets up
+3. Terminal appears automatically
+4. Start typing commands!
 
 ```bash
-# Clone repository
+# Your first command - try it now:
+pwd
+
+# Where are the exercises?
+ls exercises/
+
+# Start learning:
+cd exercises/session1-navigation
+cat README.md
+```
+
+**That's it! You're learning Unix.** 🎉
+
+---
+
+## Why Replit?
+
+✅ **Zero installation** - Works in your browser  
+✅ **No Unix knowledge needed** - Just click and go  
+✅ **Free** - Generous free tier  
+✅ **Persistent** - Your work is saved  
+✅ **Accessible** - Works on any device  
+
+**Perfect for beginners!**
+
+---
+
+## Alternative Options (Advanced Users)
+
+<details>
+<summary><b>GitHub Codespaces</b> (Browser, requires some setup)</summary>
+
+**Prerequisites:** 
+- GitHub account
+- Comfortable running commands
+
+**Steps:**
+1. Go to: https://github.com/yourusername/unix-fundamental-sandbox
+2. Click **"Code"** → **"Codespaces"** → **"Create codespace on main"**
+3. Wait 2-3 minutes
+4. Run these commands in terminal:
+   ```bash
+   cd ~
+   git clone https://github.com/yourusername/unix-fundamental-sandbox.git
+   cd unix-fundamental-sandbox
+   cd exercises/session1-navigation
+   cat README.md
+   ```
+
+⚠️ **Note:** Requires manual setup. If you're a complete beginner, use Replit instead.
+</details>
+
+<details>
+<summary><b>Docker Desktop</b> (Local, for recording videos)</summary>
+
+**Prerequisites:**
+- Docker Desktop installed: https://www.docker.com/products/docker-desktop/
+- Terminal/command-line comfort
+- 15-20 minutes
+
+**Steps:**
+```bash
 git clone https://github.com/yourusername/unix-fundamentals-sandbox.git
 cd unix-fundamentals-sandbox/docker
-
-# Start container (use command without hyphen on newer Docker)
 docker compose up -d
-
-# If "command not found", try old syntax:
-# docker-compose up -d
-
-# Enter the sandbox
 docker exec -it unix-fundamentals-sandbox bash
-
-# Start learning!
 cd ~/exercises/session1-navigation
 cat README.md
 ```
 
-#### To Stop:
-```bash
-# Exit container
-exit
-
-# Stop container
-docker compose down
-```
-
----
-
-### Option C: Replit (Alternative Browser)
-
-**✅ Browser-based**  
-**✅ No installation**  
-**⚠️ Requires Replit account**
-
-#### Steps:
-1. Go to [replit.com](https://replit.com) and sign up (free)
-2. Click "Create Repl"
-3. Select "Import from GitHub"
-4. Paste repository URL
-5. Click "Import" and wait for setup
-6. Terminal opens - you're ready!
-
-```bash
-cd ~/exercises/session1-navigation
-cat README.md
-```
+**Best for:** Recording video tutorials, offline work
+</details>
 
 ---
 
 ## 🎯 What to Do First
 
-Once you're in the sandbox (any method):
+Once you're in any environment:
 
 ### 1. Orient Yourself
 ```bash
 # Where am I?
 pwd
-# Output: /home/student
 
 # What's here?
 ls
-# Output: exercises, solutions, cheatsheets
 ```
 
-### 2. Start Session 1
+### 2. Find the Exercises
 ```bash
-cd ~/exercises/session1-navigation
+# List all sessions
+ls exercises/
+
+# Go to Session 1
+cd exercises/session1-navigation
+```
+
+### 3. Read the Instructions
+```bash
+# Read Session 1 exercises
 cat README.md
+
+# Or use 'less' to page through:
+less README.md
+# (Press 'q' to quit)
 ```
 
-### 3. Follow the Exercises
-- Read the instructions
-- Try the commands
-- Experiment!
-- Check solutions if stuck: `~/solutions/session1-navigation/SOLUTIONS.md`
+### 4. Start Learning!
+Follow the exercises, experiment, make mistakes (they're how you learn!).
 
-### 4. Use the Cheat Sheet
+### 5. Check Solutions If Stuck
 ```bash
-cat ~/cheatsheets/unix-commands.md
+cd solutions/session1-navigation
+cat SOLUTIONS.md
 ```
+
+### 6. Use the Cheat Sheet
+```bash
+cat cheatsheets/unix-commands.md
+# Or: less cheatsheets/unix-commands.md
+```
+
+---
+
+## 📊 Comparison Table
+
+| Method | Setup Time | Best For | Requirements |
+|--------|-----------|----------|--------------|
+| **Replit** ⭐ | 30 seconds | Complete beginners | Browser only |
+| **Codespaces** | 2-5 min | Some Unix knowledge | GitHub account, manual setup |
+| **Docker** | 15-20 min | Video recording, offline | Docker installed, CLI comfort |
 
 ---
 
 ## 🆘 Troubleshooting
 
-### "docker: command not found"
-→ Install Docker Desktop first: https://www.docker.com/products/docker-desktop/
+### Replit Issues
 
-### "docker-compose: command not found"
-→ Use `docker compose` (no hyphen) instead
+**Problem:** Can't find exercises folder  
+**Solution:** They should appear automatically. Try: `ls exercises/`
 
-### Codespace won't load
-→ Wait 2-3 minutes, refresh page, or try different browser
+**Problem:** Repl won't load  
+**Solution:** Try different browser, clear cache, or create new Repl
 
-### Still stuck?
-→ See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed help
+### For Other Setup Methods
 
----
-
-## 📊 Quick Comparison
-
-| Method | Setup Time | Requirements | Best For |
-|--------|-----------|--------------|----------|
-| **Codespaces** | 2 min | Browser + GitHub account | Beginners, quick start |
-| **Docker** | 15 min | Docker Desktop installed | Offline work, recording |
-| **Replit** | 5 min | Replit account | Alternative browser option |
+See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed help.
 
 ---
 
 ## ✅ You're Ready!
 
-Pick your method above and start learning. Remember:
-- **Session 1** teaches file system navigation
-- Work through **sessions in order**
-- **Experiment freely** - you can't break anything!
-- **Check solutions** if you get stuck
+Pick your method above and **start learning**.
+
+Remember:
+- Session 1 teaches file system navigation
+- Work through sessions in order
+- Experiment freely - you can't break anything!
+- Check solutions if you get stuck
 
 **Have fun learning Unix!** 🚀
 
@@ -197,10 +185,9 @@ Pick your method above and start learning. Remember:
 
 - [Full README](README.md) - Complete documentation
 - [Troubleshooting Guide](TROUBLESHOOTING.md) - Common issues
-- [Exercises Overview](exercises/README.md) - All 5 sessions
 - [Commands Cheat Sheet](cheatsheets/unix-commands.md) - Quick reference
+- [Video Series](#) - Follow along tutorials (coming soon)
 
 ---
 
-**Questions?** Open an issue on GitHub or check the [Troubleshooting Guide](TROUBLESHOOTING.md)!
-
+**Ready? Click the Replit button at the top and start learning!** 👆

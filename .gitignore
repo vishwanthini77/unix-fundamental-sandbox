@@ -17,3 +17,6 @@ Thumbs.db
 node_modules/
 dist/
 build/
+DEPLOYMENT-CHECKLIST.md
+FILE-MANIFEST.md
+DEPLOYMENT-GUIDE.txt

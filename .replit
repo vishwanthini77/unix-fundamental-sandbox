@@ -1,0 +1,13 @@
+run = "bash"
+language = "bash"
+entrypoint = ".welcome.sh"
+
+[nix]
+channel = "stable-22_11"
+
+[deployment]
+run = ["sh", "-c", "bash"]
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
